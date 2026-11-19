@@ -1,0 +1,63 @@
+{
+  "name": "gps-trip-kit",
+  "version": "0.1.0",
+  "description": "Turn raw GPS points into clean trips and stops. Zero dependencies. Noise filtering, stop detection, trip segmentation, summaries, simplification and polylines.",
+  "main": "./dist/index.cjs",
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --clean",
+    "test": "node --import tsx --test test/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build"
+  },
+  "keywords": [
+    "gps",
+    "tracking",
+    "fleet",
+    "telematics",
+    "trips",
+    "stops",
+    "stay-point",
+    "douglas-peucker",
+    "polyline",
+    "haversine",
+    "geolocation"
+  ],
+  "author": "Mostafa Khaled (https://github.com/senkop)",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "tsup": "^8.5.1",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/senkop/gps-trip-kit.git"
+  },
+  "homepage": "https://github.com/senkop/gps-trip-kit#readme",
+  "bugs": {
+    "url": "https://github.com/senkop/gps-trip-kit/issues"
+  },
+  "type": "module",
+  "sideEffects": false,
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18"
+  }
+}
